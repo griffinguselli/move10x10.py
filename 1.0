@@ -1,0 +1,81 @@
+import sys
+from subprocess import run
+try:
+    from readchar import readkey
+except ModuleNotFoundError:
+    run('pip install readchar --break-system-packages', shell=True)
+def goto():
+    if y == 3:
+        printrow(3)
+    elif y == 2:
+        printrow(2)
+    elif y == 1:
+        printrow(1)
+    else:
+        print("Coordinates have gone off the map.\n Exiting...")
+        sys.exit()
+
+
+
+def printrow(r):
+    if r == 1:
+        if x == 1:
+            print("# . .")
+        elif x == 2:
+            print(". # .")
+        elif x == 3:
+            print(". . #")
+        else:
+            print("Coordinates have gone off the map. \n Exiting...")
+            sys.exit()
+        print(". . .")
+        print(". . .")
+    if r == 2:
+        print(". . .")
+        if x == 1:
+            print("# . .")
+        elif x == 2:
+            print(". # .")
+        elif x == 3:
+            print(". . #")
+        else:
+            print("Coordinates have gone off the map. \n Exiting...")
+            sys.exit()
+        print(". . .")
+    if r == 3:
+        print(". . .")
+        print(". . .")
+        if x == 1:
+            print("# . .")
+        elif x == 2:
+            print(". # .")
+        elif x == 3:
+            print(". . #")
+        else:
+            print("Coordinates have gone off the map. \n Exiting...")
+            sys.exit()
+
+x = 2
+y = 2
+while True :
+    move = readkey()
+    if move == "w":
+        y = y - 1
+        run('clear', shell=True)
+        goto()
+    elif move == "s":
+        y = y + 1
+        run('clear', shell=True)
+        goto()
+    elif move == "a":
+        x = x - 1
+        run('clear', shell=True)
+        goto()
+    elif move == "d":
+        x = x + 1
+        run('clear', shell=True)
+        goto()
+    else:
+        sys.exit()
+
+
